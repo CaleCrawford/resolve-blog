@@ -1,64 +1,33 @@
-# Strapi Starter React Blog
+# A statically generated blog example using Next.js, Markdown, and TypeScript
 
-> **Warning :warning:**
->
-> This starter is deprecated and relies on the deprecated **[strapi/strapi-legacy-blog](https://github.com/strapi/strapi-legacy-blog)** repository.
->
-> Instead, we recommend that you use our other React blog starters with better SEO support:
->
-> * [**strapi-starter-gatsby-blog**](https://github.com/strapi/strapi-starter-gatsby-blog)
-> * [**strapi-starter-next-blog**](https://github.com/strapi/strapi-starter-next-blog)
+This is the existing [blog-starter](https://github.com/vercel/next.js/tree/canary/examples/blog-starter) plus TypeScript.
 
-React starter for creating a blog with Strapi.
+This example showcases Next.js's [Static Generation](https://nextjs.org/docs/basic-features/pages) feature using Markdown files as the data source.
 
-This starter allows you to try Strapi with React with the example of a simple blog. It is fully customizable and due to the fact that it is open source, fully open to contributions. Do not hesitate to add new features etc ...
+The blog posts are stored in `/_posts` as Markdown files with front matter support. Adding a new Markdown file in there will create a new blog post.
 
-You may want to know how to develop such a starter by your own! This starter is actually the result of this [tutorial](https://strapi.io/blog/build-a-blog-with-react-strapi-and-apollo)
+To create the blog posts we use [`remark`](https://github.com/remarkjs/remark) and [`remark-html`](https://github.com/remarkjs/remark-html) to convert the Markdown files into an HTML string, and then send it down as a prop to the page. The metadata of every post is handled by [`gray-matter`](https://github.com/jonschlinkert/gray-matter) and also sent in props to the page.
 
-![screenshot image](/screenshot.png)
+## How to use
 
-## Features
+## Deploy your own
 
-- 2 Content types: Article, Category
-- 2 Created articles
-- 3 Created categories
-- Permissions set to `true` for article and category
-- Responsive design using UIkit
+Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
 
-Pages:
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/git?c=1&s=https://github.com/vercel/next.js/tree/canary/examples/blog-starter-typescript)
 
-- "/" display every articles
-- "/article/:id" display one article
-- "/category/:id" display articles depending on the category
-
-## Getting started
-
-### Backend
-
-See full instructions [here](https://github.com/strapi/strapi-legacy-blog)
-
-### Frontend
+Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
 
 ```bash
-git clone https://github.com/strapi/strapi-starter-react-blog.git
-cd strapi-starter-react-blog
+npx create-next-app --example blog-starter-typescript blog-starter-typescript-app
+# or
+yarn create next-app --example blog-starter-typescript blog-starter-typescript-app
 ```
 
-Then start the frontend server:
+Your blog should be up and running on [http://localhost:3000](http://localhost:3000)! If it doesn't work, post on [GitHub discussions](https://github.com/vercel/next.js/discussions).
 
-```bash
-# Using yarn
-yarn install
-yarn develop
+Deploy it to the cloud with [Vercel](https://vercel.com/import?filter=next.js&utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
 
-# Using npm
-npm install
-npm run develop
+# Notes
 
-# Create a .env file containing the API_URL variable
-echo 'SKIP_PREFLIGHT_CHECK=true\nREACT_APP_BACKEND_URL="http://localhost:1337' >> .env
-```
-
-React server is running here => [http://localhost:3000](http://localhost:3000)
-
-Enjoy this starter!
+This blog-starter-typescript uses [Tailwind CSS](https://tailwindcss.com). To control the generated stylesheet's filesize, this example uses Tailwind CSS' v1.4 [`purge` option](https://tailwindcss.com/docs/controlling-file-size/#removing-unused-css) to remove unused CSS.
